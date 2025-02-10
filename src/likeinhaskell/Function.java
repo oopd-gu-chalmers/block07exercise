@@ -9,8 +9,8 @@ public interface Function<T,R> {
     // TODO: Step 6: Can you broaden the parameter type for
     //   the parameter 'other', to make 'compose' work for
     //   a wider range of functions?
-    default <A> Function<A, R> compose(Function<A, T> g) {
-        return x -> apply(g.apply(x));
+    default <A> Function<A, R> compose(Function<A, ? extends T> other) {
+        return x -> apply(other.apply(x));
     }
 
 }
